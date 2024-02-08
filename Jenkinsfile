@@ -1,7 +1,8 @@
 #!groovy
 
 pipeline {
-	agent none  stages {
+	agent none  
+    stages {
   	stage('Maven Install') {
     	agent {
       	docker {
@@ -21,7 +22,8 @@ pipeline {
     stage('Docker Push') {
     	agent any
       steps {
-      	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKERHUB_USER')]) {
+      	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) 
+        {
         	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh 'docker push deepak2717/spring-petclinic:latest'
         }
