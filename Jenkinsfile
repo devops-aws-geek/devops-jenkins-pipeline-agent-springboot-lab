@@ -7,7 +7,7 @@ pipeline {
     	agent {
       	docker {
         	image 'maven:3.9.6'
-                args '-u root'
+                args '-u jenkins'
         }
       }
       steps {
