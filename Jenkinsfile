@@ -7,7 +7,7 @@ pipeline {
     	agent {
       	docker {
         	image 'maven:3.9.6'
-                args '-u jenkins'
+                args '-u root'
         }
       }
       steps {
@@ -17,6 +17,7 @@ pipeline {
     stage('Docker Build') {
     	agent any
       steps {
+        sh 'sudo chown -R jenkins:jenkins target'      
       	sh 'docker build -t deepak2717/spring-petclinic:latest . --file /var/lib/jenkins/workspace/devops-pipeline-with-docker-agent-example/target/'
       }
     }
