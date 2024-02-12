@@ -17,7 +17,7 @@ pipeline {
     stage('Docker Build') {
     	agent any
       steps {
-      	sh 'docker build -t deepak2717/spring-petclinic:latest .'
+      	sh 'docker build -t deepak2717/spring-petclinic:latest . --file /var/lib/jenkins/workspace/devops-pipeline-with-docker-agent-example/target/'
       }
     }
     stage('Docker Push') {
