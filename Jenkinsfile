@@ -17,7 +17,7 @@ pipeline {
     stage('Docker Build') {
     	agent any
       steps {
-        sh 'sudo chown -R jenkins:jenkins target'      
+        sh 'chown -R jenkins:jenkins target'      
       	sh 'docker build -t deepak2717/spring-petclinic:latest . --file /var/lib/jenkins/workspace/devops-pipeline-with-docker-agent-example/target/'
       }
     }
